@@ -1,8 +1,12 @@
-# Ignore Gradle project-specific cache directory
+# Caché y salidas de Gradle
 .gradle
-
-# Ignore Gradle build output directory
 build
-
-# Ignore Kotlin plugin data
 .kotlin
+
+# Dibujos SVG que genera la aplicación (se regeneran con ./gradlew run)
+salida/
+
+# Entornos de desarrollo
+.idea/
+*.iml
+.vscode/
