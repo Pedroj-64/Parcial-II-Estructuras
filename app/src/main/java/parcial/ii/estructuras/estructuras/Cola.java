@@ -3,19 +3,12 @@ package parcial.ii.estructuras.estructuras;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-/**
- * Cola propia (FIFO) implementada con nodos enlazados (frente y final).
- * Todas las operaciones básicas son O(1).
- *
- * @param <T> tipo de los elementos
- */
 public class Cola<T> {
 
     private Nodo<T> frente;
     private Nodo<T> fin;
     private int tamanio;
 
-    /** Agrega un elemento al final de la cola. */
     public void encolar(T dato) {
         Nodo<T> nuevo = new Nodo<>(dato);
         if (estaVacia()) {
@@ -27,7 +20,6 @@ public class Cola<T> {
         tamanio++;
     }
 
-    /** Retira y retorna el elemento del frente. */
     public T desencolar() {
         if (estaVacia()) {
             throw new NoSuchElementException("La cola está vacía");
@@ -41,7 +33,6 @@ public class Cola<T> {
         return dato;
     }
 
-    /** Retorna el elemento del frente sin retirarlo. */
     public T verFrente() {
         if (estaVacia()) {
             throw new NoSuchElementException("La cola está vacía");
@@ -57,10 +48,6 @@ public class Cola<T> {
         return tamanio;
     }
 
-    /**
-     * Representación desde el frente hasta el final, por ejemplo "A6 → A5 → A4".
-     * Se construye de forma recursiva recorriendo los nodos; no modifica la estructura.
-     */
     public String mostrar(Function<T, String> formato) {
         if (estaVacia()) {
             return "(vacía)";

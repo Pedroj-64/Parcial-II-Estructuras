@@ -12,14 +12,12 @@ import parcial.ii.estructuras.estructuras.Cola;
 import parcial.ii.estructuras.estructuras.Pila;
 import parcial.ii.estructuras.modelo.Caja;
 
-/** Pruebas del ejercicio 1: retiro de cajas y evaluación de expresiones. */
 class Ejercicio1Test {
 
     private static String texto(Pila<?> p) {
         return p.mostrar(String::valueOf);
     }
 
-    /** Pila del enunciado: C1 abajo y C7 en la cima. */
     private static Pila<Caja> pilaDelEnunciado() {
         Pila<Caja> pila = new Pila<>();
         int[] valores = {2, 4, 6, 8, 3, 9, 5};
@@ -68,15 +66,12 @@ class Ejercicio1Test {
 
     @Test
     void valoresDelEnunciadoParaLasVariables() {
-        // Tras los tres retiros la pila queda C1, C6, C2, C5 (de la cima al fondo).
         Pila<Caja> pila = pilaDelEnunciado();
         Ejercicio1Cajas.retirarCaja(pila, "C3");
         Ejercicio1Cajas.retirarCaja(pila, "C4");
         Ejercicio1Cajas.retirarCaja(pila, "C7");
         assertEquals("C1:2 → C6:9 → C2:4 → C5:3", texto(pila));
 
-        // De la cima al fondo: A = valor de C1 = 2; B = 9 / A = 4.5;
-        // C = 4 + A = 6; D = (3 + C) * A = 18.
         double a = 2;
         double b = 9 / a;
         double c = 4 + a;
@@ -89,31 +84,30 @@ class Ejercicio1Test {
 
     @Test
     void evaluadorInfijoYPostfijo() {
-        Cola<String> post = EvaluadorExpresiones.infijaAPostfija("( A + B ) * C - D / 2", null);
+        Cola<String> post = EvaluadorExpresiones.infijaAPostfija("( A + B ) * C - D / 2");
         assertEquals("A B + C * D 2 / -", post.mostrar(s -> s).replace(" → ", " "));
 
         double resultado = EvaluadorExpresiones.evaluarPostfija(
-                post, Map.of("A", 2.0, "B", 4.5, "C", 6.0, "D", 18.0), null);
+                post, Map.of("A", 2.0, "B", 4.5, "C", 6.0, "D", 18.0));
         assertEquals((2 + 4.5) * 6 - 18 / 2.0, resultado, 1e-9);
     }
 
     @Test
     void expresionDelEnunciado() {
-        // (A + B) * C - (A - B) * D con A=2, B=4.5, C=6, D=18
-        Cola<String> post = EvaluadorExpresiones.infijaAPostfija("(A + B) * C - (A - B) * D", null);
+        Cola<String> post = EvaluadorExpresiones.infijaAPostfija("(A + B) * C - (A - B) * D");
         assertEquals("A B + C * A B - D * -", post.mostrar(s -> s).replace(" → ", " "));
 
         double resultado = EvaluadorExpresiones.evaluarPostfija(
-                post, Map.of("A", 2.0, "B", 4.5, "C", 6.0, "D", 18.0), null);
+                post, Map.of("A", 2.0, "B", 4.5, "C", 6.0, "D", 18.0));
         assertEquals(84, resultado, 1e-9);
     }
 
     @Test
     void precedenciaYPotencia() {
-        Cola<String> post = EvaluadorExpresiones.infijaAPostfija("2 ^ 3 ^ 2", null);
+        Cola<String> post = EvaluadorExpresiones.infijaAPostfija("2 ^ 3 ^ 2");
         assertEquals("2 3 2 ^ ^", post.mostrar(s -> s).replace(" → ", " "));
 
-        double resultado = EvaluadorExpresiones.evaluarPostfija(post, Map.of(), null);
+        double resultado = EvaluadorExpresiones.evaluarPostfija(post, Map.of());
         assertEquals(512, resultado, 1e-9);
     }
 }

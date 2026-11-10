@@ -1,6 +1,5 @@
 package parcial.ii.estructuras.modelo;
 
-/** Paquete pendiente de entrega: código único, tipo de entrega y peso en kg (entero positivo). */
 public record Paquete(String codigo, TipoEntrega tipo, int peso) {
 
     public Paquete {

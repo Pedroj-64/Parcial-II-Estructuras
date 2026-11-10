@@ -1,10 +1,5 @@
 package parcial.ii.estructuras.estructuras;
 
-/**
- * Nodo simple enlazado usado por la pila y la cola propias.
- *
- * @param <T> tipo del dato almacenado
- */
 public class Nodo<T> {
 
     private T dato;
