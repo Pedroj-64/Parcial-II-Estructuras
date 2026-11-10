@@ -60,11 +60,11 @@ public class App {
         cola.encolar(new Paquete("P6", TipoEntrega.URGENTE, 4));
         cola.encolar(new Paquete("P7", TipoEntrega.NORMAL, 2));
         System.out.println("Inicial: " + cola);
-        int[] capacidad = {14};
+        int capacidad = 14;
         Cola<Paquete> seleccionados = Ejercicio3Paquetes.seleccionarPaquetes(cola, capacidad);
         System.out.println("Seleccionados: " + seleccionados);
         System.out.println("Pendientes: " + cola);
-        System.out.println("Capacidad libre: " + capacidad[0] + " kg");
+        System.out.println("Capacidad libre: " + (capacidad - Ejercicio3Paquetes.pesoTotal(seleccionados)) + " kg");
     }
 
     private static void ejercicio4() {

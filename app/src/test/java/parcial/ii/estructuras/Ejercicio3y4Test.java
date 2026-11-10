@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import parcial.ii.estructuras.ejercicios.Ejercicio3Paquetes;
+import parcial.ii.estructuras.ejercicios.Ejercicio4Arbol;
 import parcial.ii.estructuras.estructuras.ArbolBB;
 import parcial.ii.estructuras.estructuras.Cola;
 import parcial.ii.estructuras.modelo.Paquete;
@@ -24,11 +25,11 @@ class Ejercicio3y4Test {
     @Test
     void seleccionDelEnunciado() {
         Cola<Paquete> pend = cola();
-        int[] cap = {14};
+        int cap = 14;
         Cola<Paquete> sel = Ejercicio3Paquetes.seleccionarPaquetes(pend, cap);
         assertEquals("P2(URGENTE, 7kg) → P4(URGENTE, 5kg) → P7(NORMAL, 2kg)", sel.toString());
         assertEquals("P1(NORMAL, 4kg) → P3(NORMAL, 3kg) → P5(NORMAL, 6kg) → P6(URGENTE, 4kg)", pend.toString());
-        assertEquals(0, cap[0]);
+        assertEquals(0, cap - Ejercicio3Paquetes.pesoTotal(sel));
     }
 
     @Test
@@ -44,9 +45,9 @@ class Ejercicio3y4Test {
         for (int c : new int[] {41, 20, 52, 16, 6, 13, 12, 60, 22, 47, 50, 43, 44}) {
             a.insertar(c);
         }
-        assertEquals(7, ArbolBB.contarEquiposEnRango(a.getRaiz(), 20, 50));
-        assertEquals(13, ArbolBB.contarEquiposEnRango(a.getRaiz(), 0, 100));
-        assertEquals(0, ArbolBB.contarEquiposEnRango(a.getRaiz(), 50, 20));
-        assertEquals(0, ArbolBB.contarEquiposEnRango(null, 0, 10));
+        assertEquals(7, Ejercicio4Arbol.contarEquiposEnRango(a.getRaiz(), 20, 50));
+        assertEquals(13, Ejercicio4Arbol.contarEquiposEnRango(a.getRaiz(), 0, 100));
+        assertEquals(0, Ejercicio4Arbol.contarEquiposEnRango(a.getRaiz(), 50, 20));
+        assertEquals(0, Ejercicio4Arbol.contarEquiposEnRango(null, 0, 10));
     }
 }
