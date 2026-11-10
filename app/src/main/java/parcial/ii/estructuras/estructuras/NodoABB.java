@@ -1,11 +1,7 @@
 package parcial.ii.estructuras.estructuras;
 
-/**
- * NodoABB es el nodo de arbol binario de búsqueda (ABB) que contiene una clave y referencias a sus hijos izquierdo y derecho.
- * La clase proporciona métodos para acceder y modificar la clave y los hijos.
- */
 public class NodoABB {
-    private int codigo;
+    private final int codigo;
     private NodoABB izquierdo;
     private NodoABB derecho;
 
@@ -15,10 +11,6 @@ public class NodoABB {
 
     public int getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public NodoABB getIzquierdo() {
@@ -35,9 +27,5 @@ public class NodoABB {
 
     public void setDerecho(NodoABB derecho) {
         this.derecho = derecho;
-    }
-
-    public boolean esHoja() {
-        return izquierdo == null && derecho == null;
     }
 }
