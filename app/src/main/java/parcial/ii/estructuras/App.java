@@ -11,8 +11,17 @@ import parcial.ii.estructuras.modelo.Caja;
 import parcial.ii.estructuras.modelo.Paquete;
 import parcial.ii.estructuras.modelo.TipoEntrega;
 
+/**
+ * Punto de entrada con las pruebas de escritorio de los ejercicios del parcial.
+ * Se ejecuta con {@code ./gradlew run}.
+ */
 public class App {
 
+    /**
+     * Ejecuta en orden las pruebas de los ejercicios 1 a 4a.
+     *
+     * @param args no se usan
+     */
     public static void main(String[] args) {
         ejercicio1();
         ejercicio2();
@@ -20,6 +29,7 @@ public class App {
         ejercicio4();
     }
 
+    /** Ejercicio 1: pila de 7 cajas y retiro de C3, C4 y C7 sobre la misma pila. */
     private static void ejercicio1() {
         System.out.println("== Ejercicio 1: retirarCaja ==");
         Pila<Caja> pila = new Pila<>();
@@ -35,6 +45,7 @@ public class App {
         System.out.println("Final: " + pila);
     }
 
+    /** Ejercicio 2: segmentos de un historial de 6 acciones, válidos e inválidos. */
     private static void ejercicio2() {
         System.out.println("\n== Ejercicio 2: obtenerSegmento ==");
         Pila<String> historial = new Pila<>();
@@ -49,6 +60,7 @@ public class App {
         System.out.println("Original tras las llamadas: " + historial);
     }
 
+    /** Ejercicio 3: cola de 7 paquetes con capacidad de 14 kg. */
     private static void ejercicio3() {
         System.out.println("\n== Ejercicio 3: seleccionarPaquetes ==");
         Cola<Paquete> cola = new Cola<>();
@@ -67,6 +79,7 @@ public class App {
         System.out.println("Capacidad libre: " + (capacidad - Ejercicio3Paquetes.pesoTotal(seleccionados)) + " kg");
     }
 
+    /** Ejercicio 4a: conteo por rango sobre el ABB de los códigos del enunciado. */
     private static void ejercicio4() {
         System.out.println("\n== Ejercicio 4a: contarEquiposEnRango ==");
         ArbolBB arbol = new ArbolBB();
